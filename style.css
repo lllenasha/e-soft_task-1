@@ -1,0 +1,401 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+.scene {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(1deg, rgb(63, 43, 150) 5%, rgb(168, 192, 255) 95%);
+}
+
+h1 {
+  position: absolute;
+  top: 20px;
+  width: 100%;
+  padding: 0px 30px;
+  text-align: center;
+  color: #fff;
+  text-shadow: 0 2px 0 #c77dff;
+  transition: color 0.3s ease 0s;
+}
+
+h1:hover {
+  color: #ffdeeb;
+}
+
+
+/* ! СОЛНЫШКО ! */
+.sun {
+  position: absolute;
+  top: 320px;
+  right: 130px;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+      rgb(255, 255, 255) 18%,
+      rgb(255, 236, 125) 62%,
+      rgb(255, 175, 123) 100%);
+  box-shadow: 0 0 25px 10px rgba(255, 211, 100, 0.35);
+  z-index: 1;
+}
+
+
+.sun::before {
+  content: "";
+  position: absolute;
+  inset: -20px;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+      rgba(255, 220, 120, 0.4) 30%,
+      rgba(255, 190, 90, 0.15) 65%,
+      transparent 100%);
+  z-index: -1;
+}
+
+
+.sun::after {
+  content: "";
+  position: absolute;
+  inset: -18px;
+  border-radius: 50%;
+  background: repeating-conic-gradient(from 0deg,
+      rgba(255, 210, 100, 0.6) 0deg 8deg,
+      transparent 8deg 30deg);
+  mask: radial-gradient(circle,
+      transparent 55%,
+      black 58% 75%,
+      transparent 78%);
+  -webkit-mask: radial-gradient(circle,
+      transparent 55%,
+      black 58% 75%,
+      transparent 78%);
+  z-index: -2;
+}
+
+
+.sun {
+  animation: sunFloat 4s ease-in-out infinite,
+    sunGlow 3s ease-in-out infinite alternate;
+}
+
+
+.sun::before {
+  animation: glowPulse 3s ease-in-out infinite alternate;
+}
+
+
+.sun::after {
+  animation: sunRotate 40s linear infinite;
+}
+
+@keyframes sunFloat {
+
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-6px) scale(1.03);
+  }
+}
+
+@keyframes sunGlow {
+  from {
+    box-shadow: 0 0 25px 10px rgba(255, 211, 100, 0.35);
+  }
+
+  to {
+    box-shadow: 0 0 35px 16px rgba(255, 211, 100, 0.55);
+  }
+}
+
+@keyframes glowPulse {
+  from {
+    opacity: 0.6;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1.12);
+  }
+}
+
+@keyframes sunRotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+/* ! ОБЛАЧКИ ! */
+.cloud {
+  position: absolute;
+  top: 350px;
+  right: 380px;
+  width: 110px;
+  height: 36px;
+  border-radius: 20px;
+  background: linear-gradient(to bottom,
+      #ffffff 0%,
+      #f8fbff 75%,
+      #eaf2fa 100%);
+  box-shadow: 0 5px 15px rgba(180, 205, 230, 0.2);
+  z-index: 2;
+
+  animation: cloudFloat 6s ease-in-out infinite;
+}
+
+.cloud_left {
+  top: 250px;
+  left: 180px;
+}
+
+.cloud_right {
+  top: 400px;
+  right: 180px;
+}
+
+.cloud::before {
+  content: "";
+  position: absolute;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(to bottom,
+      #ffffff,
+      #f5f9ff);
+  top: -25px;
+  left: 18px;
+  box-shadow: 0 -2px 8px rgba(255, 255, 255, 0.5);
+  z-index: -1;
+}
+
+.cloud::after {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(to bottom,
+      #ffffff,
+      #f5f9ff);
+  top: -15px;
+  right: 12px;
+  z-index: -1;
+}
+
+@keyframes cloudFloat {
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  25% {
+    transform: translate(8px, -4px);
+  }
+
+  50% {
+    transform: translate(15px, 0);
+  }
+
+  75% {
+    transform: translate(7px, 4px);
+  }
+}
+
+.grass {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 20vh;
+  background: #3f8679;
+}
+
+
+.tree {
+  position: absolute;
+  bottom: 18vh;
+  left: 12%;
+  width: 120px;
+  height: 200px;
+}
+
+
+
+/* ! ЛИСТВА ! */
+.crown {
+  position: absolute;
+  top: 0;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: #ff9cc6;
+}
+
+
+
+/* ! СТВОЛ ! */
+.trunk {
+  position: absolute;
+  bottom: 0;
+  left: 45px;
+  width: 30px;
+  height: 100px;
+  background: linear-gradient(1deg, #b88a68 5%, #946e52 95%);
+  /* background: #b88a68; */
+}
+
+
+.house {
+  position: absolute;
+  bottom: 18vh;
+  left: 50%;
+  width: 240px;
+  height: 300px;
+  margin-left: -120px;
+}
+
+
+
+/* ! ТЕЛО ДОМА ! */
+.body {
+  position: absolute;
+  bottom: 0;
+  width: 240px;
+  height: 160px;
+  background: #ffb3d1;
+  /* background: linear-gradient(181deg, rgb(255, 175, 123) 5%, rgb(215, 109, 119) 50%, rgb(58, 28, 113) 95%); */
+}
+
+
+
+
+/* ! КРЫША ! */
+.roof {
+  position: absolute;
+  bottom: 160px;
+  left: -30px;
+  width: 0;
+  height: 0;
+  border-left: 150px solid transparent;
+  border-right: 150px solid transparent;
+  border-bottom: 110px solid #c77dff;
+}
+
+
+
+/* ! ДЫМОХОДНАЯ ТРУБА ! */
+.chimney {
+  position: absolute;
+  bottom: 190px;
+  left: 165px;
+  width: 30px;
+  height: 70px;
+  background: #ff6fa5;
+}
+
+
+
+
+
+/* ! ОКНО ! */
+.window {
+  position: absolute;
+  top: 25px;
+  left: 30px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: #bfe9ff;
+  border: 6px solid #fff;
+}
+
+
+
+/* ! ДВЕРЬ ! */
+.door {
+  position: absolute;
+  bottom: 0;
+  right: 30px;
+  width: 55px;
+  height: 90px;
+  border-radius: 28px 28px 0 0;
+  background: #ff5fa2;
+}
+
+
+
+/* ! КЛУБОЧЕК ДЫМА ! */
+.smoke {
+  position: absolute;
+  bottom: 250px;
+  left: 170px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.8);
+  filter: blur(2px);
+  animation: smokeRise 3s ease-out infinite;
+}
+
+.smoke::before {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  left: 8px;
+  top: -5px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.7);
+  animation: smokeRise 3s ease-out infinite;
+  animation-delay: 1s;
+}
+
+.smoke::after {
+  content: "";
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  left: -8px;
+  top: -12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+  animation: smokeRise 3s ease-out infinite;
+  animation-delay: 2s;
+}
+
+@keyframes smokeRise {
+  0% {
+    transform: translate(0, 0) scale(0.5);
+    opacity: 0;
+  }
+
+  30% {
+    opacity: 0.8;
+  }
+
+  60% {
+    transform: translate(-10px, -35px) scale(1.2);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: translate(12px, -65px) scale(1.7);
+    opacity: 0;
+  }
+}
